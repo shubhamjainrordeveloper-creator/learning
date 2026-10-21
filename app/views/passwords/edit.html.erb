@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center">
+	<h1>Edit Password</h1>
+</div>
+
+<div class="d-flex justify-content-center p-2">
+  <%= form_with model: Current.user, url: edit_password_path do |form| %>
+
+    <%= form.object.errors.any? %>
+    <% if form.object.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% form.object.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :password, class: "form-label" %>
+      <%= form.password_field :password, class: "form-control", placeholder: "password" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :password_confirmation, class: "form-label" %>
+      <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
+    </div>
+    
+    <div class="mb-3">
+      <%= form.submit "Edit Password", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
